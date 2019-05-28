@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: FederatedService
+metadata:
+  name: fed-podinfo
+  namespace: demo
+  labels:
+    app: podinfo
+spec:
+  type: ClusterIP
+  selector:
+    app: podinfo
+  ports:
+  - name: http
+    port: 9898
+    protocol: TCP
+    targetPort: http
+placement:
+  clusters:
+  - name: mars.k8s.local
+  - name: earth.k8s.local
+  overrides:
+  - clusterName: earth.k8s.local
+    clusterOverrides:
+    - path: metadata.name
+      value: earth-fed-podinfo
+  - clusterName: mars.k8s.local
+    clusterOverrides:
+    - path: metadata.name
+      value: mars-fed-podinfo
