@@ -22,8 +22,8 @@ placement:
   - clusterName: earth.k8s.local
     clusterOverrides:
     - path: metadata.name
-      value: earth-fed-podinfo
+      value: earth-podinfo
   - clusterName: mars.k8s.local
     clusterOverrides:
     - path: metadata.name
-      value: mars-fed-podinfo
+      value: mars-podinfo
